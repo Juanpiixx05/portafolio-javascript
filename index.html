@@ -7,6 +7,14 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function(){
+        emailjs.init("HsbI_KNz0Ptvbe1HA");
+    })();
+  </script>
+  
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon"> <!--IMAGEN DE ICONO-->
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">  <!--IMAGEN DE ICONO-->
@@ -516,37 +524,76 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form id="contact-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
-
+          
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Nombre" required="">
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Nombre" required="">
                 </div>
-
+          
                 <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Tu Email" required="">
+                  <input type="email" id="email" class="form-control" name="email" placeholder="Tu Email" required="">
                 </div>
-
+          
                 <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Asunto" required="">
+                  <input type="text" id="subject" class="form-control" name="subject" placeholder="Asunto" required="">
                 </div>
-
+          
                 <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Mensaje" required=""></textarea>
+                  <textarea id="message" class="form-control" name="message" rows="6" placeholder="Mensaje" required=""></textarea>
                 </div>
-
+          
                 <div class="col-md-12 text-center">
-                  <div class="loading">Cargando</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Tu mensaje ha sido enviado. Gracias!</div>
-
+                  <div class="loading" style="display: none;">Cargando...</div>
+                  <div class="error-message" style="display: none;">Ocurrió un error, inténtalo de nuevo.</div>
+                  <div class="sent-message" style="display: none;">Tu mensaje ha sido enviado. ¡Gracias!</div>
+          
                   <button type="submit">Enviar Mensaje</button>
                 </div>
-
+          
               </div>
             </form>
           </div><!-- End Contact Form -->
 
+          <script>
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+              event.preventDefault(); // Evitar que se recargue la página al enviar el formulario
+          
+              // Mostrar el mensaje de carga
+              document.querySelector('.loading').style.display = 'block';
+              document.querySelector('.sent-message').style.display = 'none';
+              document.querySelector('.error-message').style.display = 'none';
+          
+              // Recopilar los valores del formulario
+              const name = document.getElementById('name').value;
+              const email = document.getElementById('email').value;
+              const subject = document.getElementById('subject').value;
+              const message = document.getElementById('message').value;
+          
+              // Enviar el correo usando EmailJS
+              emailjs.send("service_mi3evor", "template_mjjj38j", {
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message
+              })
+              .then(function(response) {
+                console.log('¡Correo enviado con éxito!', response.status, response.text);
+          
+                // Ocultar el mensaje de carga y mostrar el mensaje de éxito
+                document.querySelector('.loading').style.display = 'none';
+                document.querySelector('.sent-message').style.display = 'block';
+              }, function(error) {
+                console.error('Ocurrió un error al enviar el correo:', error);
+          
+                // Ocultar el mensaje de carga y mostrar el mensaje de error
+                document.querySelector('.loading').style.display = 'none';
+                document.querySelector('.error-message').style.display = 'block';
+              });
+            });
+          </script>
+          
+          
         </div>
 
       </div>
