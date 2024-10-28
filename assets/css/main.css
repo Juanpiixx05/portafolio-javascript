@@ -920,20 +920,28 @@ section,
   box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.1);
 }
 
-.services .service-item.item-cyan i {
-  color: #0dcaf0;
+/*
+  HTML Icon
+*/
+
+.services .service-item.item-white i {
+  color:#059652;
 }
 
-.services .service-item.item-cyan:hover .icon i {
-  color: #101010;
+.services .service-item.item-white:hover .icon i {
+  color:#0d0d0d;
 }
 
-.services .service-item.item-cyan:hover .icon path {
-  fill: #0dcaf0;
+.services .service-item.item-white:hover .icon path {
+  fill:#059652;
 }
+
+/*
+  CSS Icon
+*/
 
 .services .service-item.item-orange i {
-  color: #fd7e14;
+  color: #ff1515d0;
 }
 
 .services .service-item.item-orange:hover .icon i {
@@ -941,11 +949,15 @@ section,
 }
 
 .services .service-item.item-orange:hover .icon path {
-  fill: #fd7e14;
+  fill: #ff1515d0;
 }
 
+/*
+  JS Icon
+*/
+
 .services .service-item.item-teal i {
-  color: #20c997;
+  color: #0dcaf0a6;
 }
 
 .services .service-item.item-teal:hover .icon i {
@@ -956,41 +968,7 @@ section,
   fill: #20c997;
 }
 
-.services .service-item.item-red i {
-  color: #df1529;
-}
 
-.services .service-item.item-red:hover .icon i {
-  color: #181616;
-}
-
-.services .service-item.item-red:hover .icon path {
-  fill: #df1529;
-}
-
-.services .service-item.item-indigo i {
-  color: #6610f2;
-}
-
-.services .service-item.item-indigo:hover .icon i {
-  color: #0c0c0c;
-}
-
-.services .service-item.item-indigo:hover .icon path {
-  fill: #6610f2;
-}
-
-.services .service-item.item-pink i {
-  color: #f3268c;
-}
-
-.services .service-item.item-pink:hover .icon i {
-  color: #090909;
-}
-
-.services .service-item.item-pink:hover .icon path {
-  fill: #f3268c;
-}
 
 /*--------------------------------------------------------------
 # Testimonials Section
